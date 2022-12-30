@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+body{
+    width:100%;
+    height:100vh;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+/*background with filter*/
+body::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url(images/nightsky.jpg);
+    background-size: cover;
+    filter: grayscale(100%);
+    z-index:-2;
+}
+
+
+
+.cloud-left{
+    width:35%;
+    height:100px;
+    position:absolute;
+    top:2%;
+    left:2%;
+    z-index:2;
+}
+.cl1{
+    margin:auto;
+    width:80%;
+    height:20%;
+    background-color:rgb(27, 27, 27); 
+    border-radius:100px 100px 2% 2%;
+}
+.cl2{
+    width:100%;
+    height:80%;
+    background:linear-gradient(rgb(27, 27, 27) 50%, gray); 
+    border-radius:100px 100px; 
+}
+
+
+
+.cloud-right{
+    width:65%;
+    height:80px;
+    position:absolute;
+    top:3%;
+    right:2%;
+}
+.cr1{
+    margin:auto;
+    width:80%;
+    height:20%;
+    background-color:rgb(27, 27, 27); 
+    border-radius:80px 50px 2% 2%;
+}
+.cr2{
+    width:100%;
+    height:80%;
+    background:linear-gradient(rgb(27, 27, 27) 50%, gray); 
+    border-radius:40px 70px; 
+}
+
+
+
+.mountain-left{
+    width:30%;
+    height:200px;
+    position:absolute;
+    top:50%;
+    left:-18%;
+    background:linear-gradient(90deg, black 50%, yellow);  
+    transform:skew(60deg);
+}
+.mountain2-left{
+    width:20%;
+    height:150px;
+    position:absolute;
+    top:75%;
+    left:10%;
+    background:linear-gradient(70deg, black 70%, yellow);  
+    transform:rotate(-40deg) skew(180deg);
+    z-index:-1;
+}
+
+.mountain3-mid{
+    width:30%;
+    height:350px;
+    position:absolute;
+    top:65%;
+    left:37%;
+    background:linear-gradient(45deg, black 70%, yellow);  
+    transform:rotate(-40deg) skew(10deg);
+    z-index:-1;
+}
+
+.mountain4-right{
+    width:30%;
+    height:250px;
+    position:absolute;
+    top:55%;
+    right:-3%;
+    background:linear-gradient(0deg, black 60%, yellow);  
+    transform:rotate(-30deg) skew(210deg);
+}
+
+
+
+.ground{
+    width:100%;
+    height:200px;
+    background:linear-gradient(rgb(31, 28, 1),black);
+    position:absolute;
+    top:80%;
+}
