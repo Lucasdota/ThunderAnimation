@@ -10,115 +10,275 @@ body{
     margin:0;
     padding:0;
     overflow:hidden;
-}
-/*background with filter*/
-body::before{
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
     background-image: url(images/nightsky.jpg);
     background-size: cover;
-    filter: grayscale(100%);
-    z-index:-2;
 }
 
 
 
+/*clouds section*/
+/*thunder animation*/
+@keyframes thunder{
+    0%{
+        filter:opacity(100%)  
+    }
+    100%{
+        filter:opacity(0%)
+    }
+}
+/*end of thunder animation*/
+
+
+.sky{
+    width:97%;
+    min-width:100px;
+    height:70%;
+    min-height:300px;
+    display: flex;
+    margin:30px auto;
+}
 .cloud-left{
     width:35%;
-    height:100px;
-    position:absolute;
-    top:2%;
-    left:2%;
+    height:90%;
     z-index:2;
+    transition-duration: 0.1s;/*speed of which the cloud expands on clicking*/
+    transition-delay: 10ms;/*prevent too fast clicking*/
+    transition-timing-function: ease-in-out;/*smooth animation*/
+}
+.cloud-left:active{
+    height:100%;
 }
 .cl1{
     margin:auto;
     width:80%;
-    height:20%;
+    height:3%;
     background-color:rgb(27, 27, 27); 
     border-radius:100px 100px 2% 2%;
 }
 .cl2{
     width:100%;
-    height:80%;
-    background:linear-gradient(rgb(27, 27, 27) 50%, gray); 
+    height:20%;
+    background:linear-gradient(rgb(27, 27, 27) 50%, rgb(46, 46, 46)); 
     border-radius:100px 100px; 
 }
-
-
+.thunder-left{
+    width:100%;
+    height:70%;
+    background:url(images/thunder1.png);
+    background-size: cover;
+    transform: rotate(180deg); 
+    animation: thunder 3s linear infinite;
+}
 
 .cloud-right{
     width:65%;
-    height:80px;
-    position:absolute;
-    top:3%;
-    right:2%;
+    height:90%;
+    transition-duration: 0.1s;/*speed of which the cloud expands on clicking*/
+    transition-delay: 10ms;/*prevent too fast clicking*/
+    transition-timing-function: ease-in-out;/*smooth animation*/
+}
+.cloud-right:active{
+    height:100%;
 }
 .cr1{
     margin:auto;
     width:80%;
-    height:20%;
+    height:5%;
     background-color:rgb(27, 27, 27); 
     border-radius:80px 50px 2% 2%;
 }
 .cr2{
     width:100%;
-    height:80%;
-    background:linear-gradient(rgb(27, 27, 27) 50%, gray); 
+    height:20%;
+    background:linear-gradient(rgb(27, 27, 27) 50%, rgb(44, 44, 44)); 
     border-radius:40px 70px; 
 }
+.thunder-right{
+    width:50%;
+    height:65%;
+    float:left;
+    background:url(images/thunder1.png);
+    background-size: cover;
+    transform: rotate(180deg); 
+    animation: thunder 3s linear infinite;
+}
+.thunder2-right{
+    width:50%;
+    height:65%;
+    float:left;
+    background:url(images/thunder1.png);
+    background-size: cover;
+    transform: rotate(180deg); 
+    transform:scaleY(-1);
+    animation: thunder 3s linear infinite;
+}
+/*end of clouds section*/
 
 
 
+/*light animation on mountains*/
+@keyframes light-effect{
+    0%{
+        background-color:rgb(39, 39, 39); 
+    }
+    100%{
+        background-color: rgb(22, 22, 22);
+    }
+}
+/*end of light animation*/
+
+
+
+/*ground section*/
+.ground{
+    width:100%;
+    height:30%;
+    min-height:200px;
+    margin-top:-10%;
+    display: flex;
+    justify-content: space-between;
+}
+/*mountains section*/
 .mountain-left{
     width:30%;
-    height:200px;
-    position:absolute;
-    top:50%;
-    left:-18%;
-    background:linear-gradient(90deg, black 50%, yellow);  
+    height:110%;
     transform:skew(60deg);
+    margin-left:-17%;
+    animation:light-effect 3s ease-in infinite;
+    z-index:2;
 }
 .mountain2-left{
     width:20%;
-    height:150px;
-    position:absolute;
-    top:75%;
-    left:10%;
-    background:linear-gradient(70deg, black 70%, yellow);  
+    height:100%;
+    margin-top:10%;
+    animation:light-effect 3s ease-in infinite;
     transform:rotate(-40deg) skew(180deg);
     z-index:-1;
 }
 
 .mountain3-mid{
     width:30%;
-    height:350px;
-    position:absolute;
-    top:65%;
-    left:37%;
-    background:linear-gradient(45deg, black 70%, yellow);  
-    transform:rotate(-40deg) skew(10deg);
+    height:200%;
+    margin-top:3%;
+    animation:light-effect 3s ease-in infinite;
+    transform:rotate(-40deg) skew(1deg);
     z-index:-1;
 }
 
 .mountain4-right{
     width:30%;
-    height:250px;
-    position:absolute;
-    top:55%;
-    right:-3%;
-    background:linear-gradient(0deg, black 60%, yellow);  
+    height:200%;
+    margin-right:-12%;
+    animation:light-effect 3s ease-in infinite;
     transform:rotate(-30deg) skew(210deg);
+    z-index:-1;
 }
+/*end of mountains section*/
 
 
 
-.ground{
+.floor{
     width:100%;
     height:200px;
-    background:linear-gradient(rgb(31, 28, 1),black);
-    position:absolute;
-    top:80%;
+    background: linear-gradient(rgb(26, 26, 26), black);
 }
+
+
+
+
+
+
+/*small devices responsive design such as phones*/
+@media all and (max-width:768px){
+    /*clouds and thunders*/
+    .cloud-left{
+        width:0%;
+    }
+    .cloud-right{
+        width:100%;
+    }
+    .thunder-right{
+        height:90%;
+        width:100%;
+    }
+    .thunder2-right{
+        width:0%;
+    }
+
+    /*mountains*/
+    .mountain-left{
+        width:40%;
+        height:70%;
+        transform:skew(50deg);
+        margin-top:-2%;
+        margin-left:-30%;
+    }
+    .mountain2-left{
+        width:30%;
+        margin-left:-15%;
+    }
+    .mountain3-mid{
+        margin-top:0%;
+        margin-left:-5%;
+    }
+    .mountain4-right{
+        width:40%;
+        margin-right:-15%;
+        margin-top:-5%;
+        transform:rotate(-35deg) skew(190deg);
+    }
+
+    /*floor*/
+    .floor{
+        position:absolute;
+        top:85.5%;
+    }
+}
+/*end of small devices media query*/
+
+
+
+/*tablets and small desktops*/
+@media all and (min-width:769px) and (max-width:1199px){
+        /*clouds and thunders*/
+        .cloud-left{
+            width:0%;
+        }
+        .cloud-right{
+            width:100%;
+        }
+        .thunder-right{
+            height:90%;
+            width:100%;
+        }
+        .thunder2-right{
+            width:0%;
+        }
+    
+        /*mountains*/
+        .mountain-left{
+            width:35%;
+            height:120%;
+            transform:skew(50deg);
+            margin-top:-6%;
+            margin-left:-25%;
+        }
+        .mountain2-left{
+            width:30%;
+            margin-left:-15%;
+        }
+        .mountain3-mid{
+            margin-top:0%;
+
+        }
+        .mountain4-right{
+            transform:rotate(-40deg) skew(190deg);
+        }
+    
+        /*floor*/
+        .floor{
+            position:absolute;
+            top:85.5%;
+        }
+}
+/*end of tablets and small desktops media query*/
